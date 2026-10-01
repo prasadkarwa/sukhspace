@@ -18,6 +18,7 @@ const headerHTML = `
         <li><a href="about.html" data-nav="about">About</a></li>
         <li><a href="schedule.html" data-nav="schedule">Schedule</a></li>
         <li><a href="testimonials.html" data-nav="testimonials">Stories</a></li>
+        <li><a href="gallery.html" data-nav="gallery">Gallery</a></li>
         <li><a href="diet.html" data-nav="diet">Diet Plans</a></li>
         <li><a href="contact.html" data-nav="contact">Contact</a></li>
         <li><a class="btn btn-primary" href="${WA}" target="_blank" rel="noopener">Book a Session</a></li>
@@ -50,6 +51,7 @@ const footerHTML = `
           <li><a href="offerings.html">Offerings</a></li>
           <li><a href="about.html">The heart behind Sukh Space</a></li>
           <li><a href="schedule.html">Weekly schedule</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="diet.html">Customized diet plans</a></li>
         </ul>
       </div>
@@ -106,3 +108,24 @@ if (form) {
     window.open(`${WA}?text=${encodeURIComponent(text)}`, "_blank");
   });
 }
+
+const lightbox = document.createElement("div");
+lightbox.className = "lightbox";
+lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><img alt="">';
+document.body.appendChild(lightbox);
+const lightboxImg = lightbox.querySelector("img");
+const closeLightbox = () => lightbox.classList.remove("open");
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox || e.target.classList.contains("lightbox-close")) closeLightbox();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeLightbox();
+});
+document.querySelectorAll("[data-gallery]").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    lightboxImg.src = link.getAttribute("href");
+    lightboxImg.alt = link.querySelector("img")?.alt || "";
+    lightbox.classList.add("open");
+  });
+});
