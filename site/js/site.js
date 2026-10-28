@@ -1,131 +1,182 @@
-const WA = "https://wa.me/918340334846";
-const PHONE_DISPLAY = "+91 83403 34846";
-const PHONE_TEL = "+918340334846";
-const EMAIL = "sukhspace5@gmail.com";
+// Sukh Space. Generated pages work without this file; it adds the message
+// composer, the menu, the live schedule marker, the mobile dock and the lightbox.
 
-const headerHTML = `
-  <div class="topbar">Online &amp; Offline Sessions<br><a href="${WA}" target="_blank" rel="noopener">WhatsApp ${PHONE_DISPLAY}</a></div>
-  <header class="site-header">
-    <div class="wrap nav">
-      <a class="brand" href="index.html">
-        <img src="images/logo-mark.png" alt="Sukh Space logo">
-        <span>SUKH <em>SPACE</em></span>
-      </a>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="index.html" data-nav="home">Home</a></li>
-        <li><a href="offerings.html" data-nav="offerings">Offerings</a></li>
-        <li><a href="about.html" data-nav="about">About</a></li>
-        <li><a href="schedule.html" data-nav="schedule">Schedule</a></li>
-        <li><a href="testimonials.html" data-nav="testimonials">Stories</a></li>
-        <li><a href="gallery.html" data-nav="gallery">Gallery</a></li>
-        <li><a href="diet.html" data-nav="diet">Diet Plans</a></li>
-        <li><a href="contact.html" data-nav="contact">Contact</a></li>
-        <li><a class="btn btn-primary" href="${WA}" target="_blank" rel="noopener">Book a Session</a></li>
-      </ul>
-    </div>
-  </header>
-`;
+// Message composer: builds the first WhatsApp message from the visitor's choices.
+document.querySelectorAll("[data-composer]").forEach((root) => {
+  const data = JSON.parse(root.closest("section").querySelector("[data-composer-data]").textContent);
+  const preview = root.querySelector("[data-preview]");
+  const send = root.querySelector("[data-send]");
+  const trimesterSet = root.querySelector("[data-trimester]");
+  const nameInput = root.querySelector("[data-name]");
+  const suggestWrap = root.querySelector("[data-suggest-wrap]");
+  const suggestList = root.querySelector("[data-suggest]");
+  const { phone, tag } = root.dataset;
 
-const footerHTML = `
-  <section class="cta-wrap">
-    <div class="wrap">
-      <div class="cta-band">
-        <div>
-          <h2>Begin in a space that holds you.</h2>
-          <p>Join a class, book a prenatal 1:1, or message Pinki with where you are in your journey.</p>
-        </div>
-        <a class="btn btn-peach" href="${WA}" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-    </div>
-  </section>
-  <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div>
-        <h4>SUKH SPACE</h4>
-        <p>Creating Space for Your Sukh through yoga, breathwork and wellness. Ancient yogic wisdom with modern somatic practices — in Dhanbad and online.</p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="offerings.html">Offerings</a></li>
-          <li><a href="about.html">The heart behind Sukh Space</a></li>
-          <li><a href="schedule.html">Weekly schedule</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="diet.html">Customized diet plans</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Practice</h4>
-        <ul>
-          <li><a href="offerings.html#womens">Women’s health</a></li>
-          <li><a href="offerings.html#prenatal">Pre-natal sessions</a></li>
-          <li><a href="offerings.html#postpartum">Postpartum recovery</a></li>
-          <li><a href="offerings.html#weightloss">Weight loss sessions</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Reach us</h4>
-        <ul>
-          <li><a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
-          <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
-          <li><a href="https://www.instagram.com/sukhspace_/" target="_blank" rel="noopener">Instagram @sukhspace_</a></li>
-          <li>Dhanbad, Jharkhand</li>
-          <li><a href="terms.html">Terms &amp; refunds</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="wrap tiny">© ${new Date().getFullYear()} Sukh Space. All rights reserved.</div>
-  </footer>
-  <a class="wa-float" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 1.8c4.47 0 8.11 3.64 8.11 8.11 0 4.47-3.64 8.11-8.11 8.11-1.41 0-2.79-.36-4.01-1.05l-.29-.17-3.11.82.83-3.04-.18-.31a8.07 8.07 0 0 1-1.24-4.36c0-4.47 3.64-8.11 8.11-8.11zm-2.7 4.4c-.17 0-.44.06-.67.32-.23.27-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.17 1.72 2.76 4.25 3.76 2.1.83 2.53.67 2.99.62.46-.04 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29-.25-.12-1.48-.73-1.71-.81-.23-.08-.4-.12-.56.12-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.12-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.15-.25-.02-.39.11-.51.12-.12.25-.3.38-.44.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42z"/></svg>
-  </a>
-`;
+  const value = (name) => root.querySelector(`input[name="${name}"]:checked`)?.value;
 
-document.getElementById("site-chrome-start").innerHTML = headerHTML;
-document.getElementById("site-chrome-end").innerHTML = footerHTML;
+  const compose = () => {
+    const stage = data.stages.find((s) => s.id === value("stage"));
+    const trimester = value("trimester");
+    const mode = value("mode");
+    const name = nameInput.value.trim().replace(/\s+/g, " ");
+    const parts = ["Hi Pinki,"];
+    if (name) parts.push(`I'm ${name}.`);
+    if (!stage) parts.push("I found Sukh Space online and I'd like to know more about your sessions.");
+    else if (stage.id === "pregnant" && trimester) parts.push(`I'm pregnant, in my ${data.trimesters[trimester]}, and I'd like to join pre-natal sessions.`);
+    else parts.push(stage.line);
+    if (mode) parts.push(data.modes[mode]);
+    parts.push(stage?.id === "pregnant"
+      ? "Could you share batch timings, fees, and whether a 1:1 session is possible?"
+      : "Could you share batch timings and fees?");
+    return { text: parts.join(" "), stage };
+  };
 
-const page = document.body.dataset.page;
-document.querySelectorAll("[data-nav]").forEach((link) => {
-  if (link.dataset.nav === page) link.classList.add("active");
+  const update = (animate) => {
+    const { text, stage } = compose();
+    preview.textContent = text;
+    send.href = `https://wa.me/${phone}?text=${encodeURIComponent(`${text} ${tag}`)}`;
+    trimesterSet.hidden = stage?.id !== "pregnant";
+    suggestWrap.hidden = !stage;
+    if (stage) {
+      suggestList.replaceChildren(...stage.suggest.map((s) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = `/offerings#${s.id}`;
+        a.textContent = s.name;
+        li.append(a);
+        return li;
+      }));
+    }
+    if (animate) {
+      preview.classList.remove("pop");
+      void preview.offsetWidth;
+      preview.classList.add("pop");
+    }
+  };
+
+  root.addEventListener("change", () => update(true));
+  nameInput.addEventListener("input", () => update(false));
+  update(false);
 });
 
-const toggle = document.querySelector(".menu-toggle");
-const links = document.querySelector(".nav-links");
-toggle.addEventListener("click", () => links.classList.toggle("open"));
-
-const form = document.getElementById("enquire-form");
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const text = [
-      "Hello Pinki, I would like to enquire about Sukh Space.",
-      `Name: ${data.get("name")}`,
-      `Interest: ${data.get("interest")}`,
-      `Message: ${data.get("message")}`,
-    ].join("\n");
-    window.open(`${WA}?text=${encodeURIComponent(text)}`, "_blank");
+// Hero breathing animation can be paused.
+document.querySelectorAll("[data-breath-toggle]").forEach((btn) => {
+  const fig = btn.closest("[data-breath]");
+  btn.addEventListener("click", () => {
+    const paused = fig.classList.toggle("is-paused");
+    btn.setAttribute("aria-pressed", String(paused));
+    btn.setAttribute("aria-label", paused ? "Resume the breathing animation" : "Pause the breathing animation");
   });
+});
+
+// Menu
+const menu = document.getElementById("menu");
+const menuOpen = document.querySelector("[data-menu-open]");
+if (menu && menuOpen) {
+  menuOpen.addEventListener("click", () => {
+    menu.showModal();
+    menuOpen.setAttribute("aria-expanded", "true");
+  });
+  menu.addEventListener("close", () => menuOpen.setAttribute("aria-expanded", "false"));
+  menu.querySelector("[data-menu-close]").addEventListener("click", () => menu.close());
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => menu.close()));
 }
 
-const lightbox = document.createElement("div");
-lightbox.className = "lightbox";
-lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><img alt="">';
-document.body.appendChild(lightbox);
-const lightboxImg = lightbox.querySelector("img");
-const closeLightbox = () => lightbox.classList.remove("open");
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox || e.target.classList.contains("lightbox-close")) closeLightbox();
+// Schedule: mark the current time in Dhanbad on the day track.
+document.querySelectorAll("[data-day]").forEach((day) => {
+  const marker = day.querySelector("[data-now]");
+  const status = day.querySelector("[data-now-text]");
+  const tick = () => {
+    const now = new Date();
+    const parts = Object.fromEntries(
+      new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "numeric", hourCycle: "h23" })
+        .formatToParts(now).map((p) => [p.type, p.value]),
+    );
+    const t = Number(parts.hour) + Number(parts.minute) / 60;
+    const clock = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit", hour12: true })
+      .format(now).toUpperCase();
+    marker.hidden = t < 6 || t > 21;
+    marker.style.setProperty("--at", `${((t - 6) / 15) * 100}%`);
+    let where;
+    if (t >= 8 && t < 12) where = "inside the morning batch window.";
+    else if (t >= 17 && t < 19) where = "inside the evening batch window.";
+    else if (t < 8) where = "morning batches start at 8 AM.";
+    else if (t < 17) where = "evening batches start at 5 PM.";
+    else where = "the next morning window opens at 8 AM.";
+    status.textContent = `It’s ${clock} in Dhanbad, ${where}`;
+  };
+  tick();
+  setInterval(tick, 60000);
 });
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeLightbox();
+
+// Mobile dock: show past the first screen, but step aside wherever the page
+// already offers its own WhatsApp action (the composer, the closing call).
+const dock = document.querySelector("[data-dock]");
+if (dock) {
+  const covering = new Set();
+  const sync = () => dock.classList.toggle("is-shown", window.scrollY > window.innerHeight * 0.7 && covering.size === 0);
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? covering.add(e.target) : covering.delete(e.target)));
+      sync();
+    });
+    document.querySelectorAll("[data-dock-hide]").forEach((el) => io.observe(el));
+  }
+  window.addEventListener("scroll", sync, { passive: true });
+  sync();
+}
+
+// Horizontal rails: step buttons, and edge fades only where there is more to see.
+document.querySelectorAll("[data-rail]").forEach((rail) => {
+  const buttons = document.querySelectorAll(`[aria-controls="${rail.id}"]`);
+  const step = () => {
+    const item = rail.children[0];
+    const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
+    return item ? item.getBoundingClientRect().width + gap : rail.clientWidth * 0.8;
+  };
+  const sync = () => {
+    const max = rail.scrollWidth - rail.clientWidth;
+    const scrollable = max > 2;
+    rail.classList.toggle("can-prev", scrollable && rail.scrollLeft > 2);
+    rail.classList.toggle("can-next", scrollable && rail.scrollLeft < max - 2);
+    buttons.forEach((b) => {
+      b.disabled = !scrollable || (b.dataset.dir === "-1" ? rail.scrollLeft <= 2 : rail.scrollLeft >= max - 2);
+    });
+  };
+  buttons.forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: step() * Number(b.dataset.dir), behavior: "smooth" })));
+  let frame;
+  rail.addEventListener("scroll", () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(sync); }, { passive: true });
+  window.addEventListener("resize", sync);
+  sync();
 });
-document.querySelectorAll("[data-gallery]").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    lightboxImg.src = link.getAttribute("href");
-    lightboxImg.alt = link.querySelector("img")?.alt || "";
-    lightbox.classList.add("open");
+
+// Gallery lightbox, with previous/next and arrow keys.
+const lightbox = document.querySelector("[data-lightbox-dialog]");
+if (lightbox) {
+  const img = lightbox.querySelector("img");
+  const caption = lightbox.querySelector("[data-lightbox-caption]");
+  const links = [...document.querySelectorAll("[data-lightbox]")];
+  let index = 0;
+  const show = (i) => {
+    index = (i + links.length) % links.length;
+    const link = links[index];
+    img.src = link.getAttribute("href");
+    img.alt = link.querySelector("img")?.alt || "";
+    caption.textContent = `${img.alt} (${index + 1} of ${links.length})`;
+  };
+  links.forEach((link, i) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      show(i);
+      lightbox.showModal();
+    });
   });
-});
+  lightbox.querySelectorAll("[data-lightbox-step]").forEach((b) => b.addEventListener("click", () => show(index + Number(b.dataset.lightboxStep))));
+  lightbox.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") show(index + 1);
+    if (e.key === "ArrowLeft") show(index - 1);
+  });
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target.closest("[data-lightbox-close]")) lightbox.close();
+  });
+}
