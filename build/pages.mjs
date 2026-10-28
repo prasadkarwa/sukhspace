@@ -18,7 +18,7 @@ const teacher = () => `
       <p>Whether you want to ground your everyday practice or navigate motherhood with confidence, I’m here to support your path.</p>
       <dl class="creds">
         <div><dt>Training</dt><dd>200-hour certified yoga trainer</dd></div>
-        <div><dt>Specialism</dt><dd>Pre &amp; postnatal yoga</dd></div>
+        <div><dt>Speciality</dt><dd>Pre &amp; postnatal yoga</dd></div>
         <div><dt>Teaching</dt><dd>Dhanbad and live online</dd></div>
       </dl>
       <p class="signature">${TEACHER}</p>
