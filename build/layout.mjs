@@ -3,7 +3,7 @@ import { SITE, PHONE, PHONE_DISPLAY, EMAIL, INSTAGRAM, TEACHER, NAV, OFFERINGS, 
 import { sprite, icon } from "./icons.mjs";
 
 const SIZES = JSON.parse(readFileSync(new URL("./image-sizes.json", import.meta.url)));
-export const VERSION = "20261028c";
+export const VERSION = "20261028d";
 
 // <img> for a photo processed by images.mjs, with srcset across its widths.
 export const photo = (name, alt, { sizes = "100vw", cls = "", eager = false, pos = "" } = {}) => {

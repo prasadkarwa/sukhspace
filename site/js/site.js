@@ -10,6 +10,7 @@ document.querySelectorAll("[data-composer]").forEach((root) => {
   const nameInput = root.querySelector("[data-name]");
   const suggestWrap = root.querySelector("[data-suggest-wrap]");
   const suggestList = root.querySelector("[data-suggest]");
+  const announce = root.querySelector("[data-announce]");
   const { phone, tag } = root.dataset;
 
   const value = (name) => root.querySelector(`input[name="${name}"]:checked`)?.value;
@@ -47,7 +48,9 @@ document.querySelectorAll("[data-composer]").forEach((root) => {
         return li;
       }));
     }
+    // Announce the new message after a choice, not on every keystroke in the name field.
     if (animate) {
+      announce.textContent = `Your message now reads: ${text}`;
       preview.classList.remove("pop");
       void preview.offsetWidth;
       preview.classList.add("pop");
@@ -127,6 +130,7 @@ if (dock) {
 }
 
 // Horizontal rails: step buttons, and edge fades only where there is more to see.
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 document.querySelectorAll("[data-rail]").forEach((rail) => {
   const buttons = document.querySelectorAll(`[aria-controls="${rail.id}"]`);
   const step = () => {
@@ -143,7 +147,7 @@ document.querySelectorAll("[data-rail]").forEach((rail) => {
       b.disabled = !scrollable || (b.dataset.dir === "-1" ? rail.scrollLeft <= 2 : rail.scrollLeft >= max - 2);
     });
   };
-  buttons.forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: step() * Number(b.dataset.dir), behavior: "smooth" })));
+  buttons.forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: step() * Number(b.dataset.dir), behavior: reduceMotion.matches ? "auto" : "smooth" })));
   let frame;
   rail.addEventListener("scroll", () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(sync); }, { passive: true });
   window.addEventListener("resize", sync);

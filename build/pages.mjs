@@ -37,7 +37,7 @@ const home = {
   schema: [faqSchema()],
   body: `
 <section class="hero" aria-labelledby="hero-title">
-  <p class="hero-word" aria-hidden="true">सुख</p>
+  <p class="hero-word" lang="hi" aria-hidden="true">सुख</p>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="hero-title">Creating space for your sukh</h1>
@@ -66,9 +66,9 @@ const home = {
 <section class="meaning" aria-labelledby="meaning-title">
   <div class="wrap meaning-grid">
     <div class="etym" role="img" aria-label="Sukh, from su meaning good and kha meaning space">
-      <div class="etym-part"><span class="deva">सु</span><span class="latin">su</span><span class="gloss">good</span></div>
+      <div class="etym-part"><span class="deva" lang="sa">सु</span><span class="latin">su</span><span class="gloss">good</span></div>
       <span class="etym-plus" aria-hidden="true">+</span>
-      <div class="etym-part"><span class="deva">ख</span><span class="latin">kha</span><span class="gloss">space</span></div>
+      <div class="etym-part"><span class="deva" lang="sa">ख</span><span class="latin">kha</span><span class="gloss">space</span></div>
     </div>
     <div class="meaning-copy">
       <h2 id="meaning-title">Sukh is, quite literally, good space.</h2>

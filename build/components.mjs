@@ -41,13 +41,14 @@ export const composer = ({ title = "Where are you right now?", intro = "Pick wha
             <div><strong>${TEACHER}</strong><span>Sukh Space on WhatsApp</span></div>
           </div>
           <div class="chat-body">
-            <p class="bubble" data-preview aria-live="polite">Hi Pinki, I found Sukh Space online and I'd like to know more about your sessions. Could you share batch timings and fees?</p>
+            <p class="bubble" data-preview>Hi Pinki, I found Sukh Space online and I'd like to know more about your sessions. Could you share batch timings and fees?</p>
           </div>
           <div class="suggest" data-suggest-wrap hidden>
             <h3>Sessions that may suit you</h3>
             <ul data-suggest></ul>
           </div>
         </div>
+        <p class="sr" aria-live="polite" data-announce></p>
         ${waButton(WA_DEFAULT, "Send this on WhatsApp", "btn btn-primary btn-large btn-block").replace("data-wa", "data-wa data-send")}
         <p class="fine">Opens WhatsApp with this message ready. You can change it before you press send.</p>
       </div>
@@ -225,11 +226,10 @@ export const partners = () => `
   </div>
 </section>`;
 
-export const pageHero = ({ title, lead, kicker = "", image }) => `
+export const pageHero = ({ title, lead, image }) => `
 <section class="page-hero${image ? " has-photo" : ""}">
   <div class="wrap page-hero-grid">
     <div>
-      ${kicker ? `<p class="kicker">${kicker}</p>` : ""}
       <h1>${title}</h1>
       ${lead ? `<p class="lead">${lead}</p>` : ""}
     </div>
