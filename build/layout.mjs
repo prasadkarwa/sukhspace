@@ -3,7 +3,7 @@ import { SITE, PHONE, PHONE_DISPLAY, EMAIL, INSTAGRAM, TEACHER, NAV, OFFERINGS, 
 import { sprite, icon } from "./icons.mjs";
 
 const SIZES = JSON.parse(readFileSync(new URL("./image-sizes.json", import.meta.url)));
-export const VERSION = "20261028b";
+export const VERSION = "20261028c";
 
 // <img> for a photo processed by images.mjs, with srcset across its widths.
 export const photo = (name, alt, { sizes = "100vw", cls = "", eager = false, pos = "" } = {}) => {
@@ -21,7 +21,7 @@ export const photoSrc = (name) => {
   return `/images/p/${name}-${s.widths[s.widths.length - 1]}.webp`;
 };
 
-export const waButton = (href, label, cls = "btn btn-haldi") =>
+export const waButton = (href, label, cls = "btn btn-primary") =>
   `<a class="${cls}" href="${href}" target="_blank" rel="noopener" data-wa>${icon("whatsapp")}<span>${label}</span></a>`;
 
 const business = {
@@ -65,7 +65,7 @@ const header = (page) => `
         ${NAV.map((n) => `<li><a href="${n.href}"${n.key === page ? ' aria-current="page"' : ""}>${n.label}</a></li>`).join("\n        ")}
       </ul>
     </nav>
-    ${waButton(WA_DEFAULT, "Message Pinki", "btn btn-haldi btn-small header-cta")}
+    ${waButton(WA_DEFAULT, "Message Pinki", "btn btn-primary btn-small header-cta")}
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>Menu</button>
   </div>
 </header>
@@ -78,7 +78,7 @@ const header = (page) => `
     <li><a href="/"${page === "home" ? ' aria-current="page"' : ""}>Home</a></li>
     ${NAV.map((n) => `<li><a href="${n.href}"${n.key === page ? ' aria-current="page"' : ""}>${n.label}</a></li>`).join("\n    ")}
   </ul>
-  ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-haldi btn-block")}
+  ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-primary btn-block")}
 </dialog>`;
 
 const footer = (cta) => `
@@ -89,7 +89,7 @@ const footer = (cta) => `
       <p>${cta.text}</p>
     </div>
     <div class="closing-action">
-      ${waButton(cta.href || WA_DEFAULT, cta.label || "Message Pinki on WhatsApp", "btn btn-haldi btn-large")}
+      ${waButton(cta.href || WA_DEFAULT, cta.label || "Message Pinki on WhatsApp", "btn btn-primary btn-large")}
       <p class="fine">Pinki replies personally. Nothing to pay to start a chat.</p>
     </div>
   </div>
@@ -125,7 +125,7 @@ const footer = (cta) => `
   </div>
 </footer>
 <div class="dock" data-dock>
-  ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-haldi btn-block")}
+  ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-primary btn-block")}
 </div>`;
 
 export const page = ({ key, path, title, description, body, hero = "light", cta, schema = [], image = "/images/p/og.jpg", preload }) => {

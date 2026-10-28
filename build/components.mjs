@@ -48,7 +48,7 @@ export const composer = ({ title = "Where are you right now?", intro = "Pick wha
             <ul data-suggest></ul>
           </div>
         </div>
-        ${waButton(WA_DEFAULT, "Send this on WhatsApp", "btn btn-haldi btn-large btn-block").replace("data-wa", "data-wa data-send")}
+        ${waButton(WA_DEFAULT, "Send this on WhatsApp", "btn btn-primary btn-large btn-block").replace("data-wa", "data-wa data-send")}
         <p class="fine">Opens WhatsApp with this message ready. You can change it before you press send.</p>
       </div>
     </div>

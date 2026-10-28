@@ -43,7 +43,7 @@ const home = {
       <h1 id="hero-title">Creating space for your sukh</h1>
       <p class="lead">Through yoga, breathwork and wellness. Ancient yogic wisdom meets modern somatic practice, guided by Pinki in Dhanbad and online.</p>
       <div class="hero-actions">
-        ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-haldi btn-large")}
+        ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-primary btn-large")}
         <a class="text-link light" href="#begin">Find the right session</a>
       </div>
       <ul class="hero-proof">
@@ -129,7 +129,7 @@ const about = {
   description: "Meet Pinki (Pankhuri), 200-hour certified yoga trainer and pre and postnatal yoga specialist, and the heart behind Sukh Space in Dhanbad.",
   body: `
 ${pageHero({ title: "The heart behind Sukh Space", lead: "Pinki (Pankhuri) is a 200-hour certified yoga trainer and a pre and postnatal yoga specialist, teaching in Dhanbad and live online.", image: { name: "meditate", alt: "Pinki seated in meditation, eyes closed", pos: "50% 28%" } })}
-${teacher().replace("Hello, I’m Pinki.</h2>", "Hello, I’m Pinki.</h2>").replace(/<a class="text-link" href="\/about">More about Pinki<\/a>/, waButton(wa("Hi Pinki, I'd love to practise with you. Could you tell me about your batches and fees?"), "Say hello to Pinki", "btn btn-haldi"))}
+${teacher().replace("Hello, I’m Pinki.</h2>", "Hello, I’m Pinki.</h2>").replace(/<a class="text-link" href="\/about">More about Pinki<\/a>/, waButton(wa("Hi Pinki, I'd love to practise with you. Could you tell me about your batches and fees?"), "Say hello to Pinki", "btn btn-primary"))}
 <section class="wide-photo" aria-label="Practice in the garden">
   ${photo("garden", "Pinki leading a class in a garden, students seated before her", { sizes: "100vw", pos: "50% 35%" })}
 </section>
