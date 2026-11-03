@@ -31,17 +31,17 @@ const home = {
   key: "home",
   path: "/",
   hero: "dark",
-  title: "Sukh Space | Prenatal Yoga, Breathwork & Women’s Health in Dhanbad & Online",
-  description: "Creating space for your sukh through yoga, breathwork and wellness. Pre-natal, postpartum, PCOS and women’s health, men’s health and weight loss sessions with Pinki (Pankhuri), in Dhanbad and live online.",
+  title: "Sukh Space | Online Prenatal Yoga, Breathwork & Women’s Health",
+  description: "Creating space for your sukh through yoga, breathwork and wellness. Live online pre-natal, postpartum, PCOS and women’s health, men’s health and weight loss sessions with Pinki (Pankhuri), across India.",
   preload: preloadPhoto("garden", "(min-width: 900px) 40vw, 78vw", [480, 896]),
-  schema: [faqSchema()],
+  schema: [faqSchema(FAQ.filter((f) => !/Dhanbad/.test(f.q + f.a)))],
   body: `
 <section class="hero" aria-labelledby="hero-title">
   <p class="hero-word" lang="hi" aria-hidden="true">सुख</p>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="hero-title">Creating space for your sukh</h1>
-      <p class="lead">Through yoga, breathwork and wellness. Ancient yogic wisdom meets modern somatic practice, guided by Pinki in Dhanbad and online.</p>
+      <p class="lead">Through yoga, breathwork and wellness. Ancient yogic wisdom meets modern somatic practice, guided by Pinki, live online.</p>
       <div class="hero-actions">
         ${waButton(WA_DEFAULT, "Message Pinki on WhatsApp", "btn btn-primary btn-large")}
         <a class="text-link light" href="#begin">Find the right session</a>
@@ -100,7 +100,7 @@ const offerings = {
   key: "offerings",
   path: "/offerings",
   title: "Offerings | Prenatal, Postpartum, PCOS & Weight Loss Yoga | Sukh Space",
-  description: "Women’s health, men’s health, pre-natal, postpartum recovery, weight loss, meditation and breathwork, chanting and weekend workshops with Sukh Space, in Dhanbad and online.",
+  description: "Live online yoga with Sukh Space for women’s health, men’s health, pre-natal, postpartum recovery and weight loss, plus meditation, breathwork and chanting.",
   body: `
 ${pageHero({ title: "Offerings", lead: "Each session is held with care, from hormonal health to pregnancy, recovery, weight management, breath and ritual. Every one can be joined online or in Dhanbad.", image: { name: "prenatal-seated", alt: "A pregnant woman seated on a jute mat beside a birthing ball", pos: "50% 80%" } })}
 <section class="offer-list">
@@ -126,7 +126,7 @@ const about = {
   key: "about",
   path: "/about",
   title: "About Pinki (Pankhuri) | Pre & Postnatal Yoga Specialist | Sukh Space",
-  description: "Meet Pinki (Pankhuri), 200-hour certified yoga trainer and pre and postnatal yoga specialist, and the heart behind Sukh Space in Dhanbad.",
+  description: "Meet Pinki (Pankhuri), 200-hour certified yoga trainer and pre and postnatal yoga specialist, and the heart behind Sukh Space, teaching live online across India.",
   body: `
 ${pageHero({ title: "The heart behind Sukh Space", lead: "Pinki (Pankhuri) is a 200-hour certified yoga trainer and a pre and postnatal yoga specialist, teaching in Dhanbad and live online.", image: { name: "meditate", alt: "Pinki seated in meditation, eyes closed", pos: "50% 28%" } })}
 ${teacher().replace("Hello, I’m Pinki.</h2>", "Hello, I’m Pinki.</h2>").replace(/<a class="text-link" href="\/about">More about Pinki<\/a>/, waButton(wa("Hi Pinki, I'd love to practise with you. Could you tell me about your batches and fees?"), "Say hello to Pinki", "btn btn-primary"))}
@@ -158,8 +158,8 @@ ${partners()}
 const schedulePage = {
   key: "schedule",
   path: "/schedule",
-  title: "Class Schedule | Morning & Evening Yoga Batches | Sukh Space Dhanbad",
-  description: "Sukh Space batch timings: morning batches 8 AM to 12 PM three times a week, evening batches 5 PM to 7 PM, and private 1:1 sessions for pregnant women. Online and in Dhanbad.",
+  title: "Class Schedule | Morning & Evening Online Yoga Batches | Sukh Space",
+  description: "Sukh Space batch timings: morning batches 8 AM to 12 PM three times a week, evening batches 5 PM to 7 PM, and private 1:1 sessions for pregnant women. Join live online from anywhere in India.",
   body: `
 ${pageHero({ title: "Schedule", lead: "Weekly classes run online and offline, in morning and evening windows. Message Pinki to confirm batch days for the session that fits you.", image: { name: "community", alt: "The Sukh Space community gathered in Dhanbad", pos: "50% 45%" } })}
 ${schedule({ title: "Batch timings" })}
@@ -174,7 +174,7 @@ const testimonialsPage = {
   key: "testimonials",
   path: "/testimonials",
   title: "Client Stories | Sukh Space Prenatal & Wellness Yoga",
-  description: "Words of gratitude from Sukh Space students in Dhanbad, Delhi, Mumbai, Bangalore, Hyderabad, Pune and Kolkata: pre-natal, post-natal, Yoga Nidra and everyday practice.",
+  description: "Words of gratitude from Sukh Space students across India, from Delhi and Mumbai to Bangalore, Hyderabad, Pune and Kolkata: pre-natal, post-natal, Yoga Nidra and everyday practice.",
   body: `
 ${pageHero({ title: "Stories of gratitude", lead: "From mothers preparing for birth to students finding calm after long days, in Dhanbad and across India.", image: { name: "garden", alt: "Pinki leading a class in a garden", pos: "50% 35%" } })}
 <section class="stories">
@@ -222,8 +222,8 @@ const GALLERY = [
 const gallery = {
   key: "gallery",
   path: "/gallery",
-  title: "Gallery | Sukh Space Yoga in Dhanbad & Online",
-  description: "Moments from Sukh Space classes, community gatherings and everyday practice, online and in Dhanbad.",
+  title: "Gallery | Sukh Space Yoga, Breathwork & Wellness",
+  description: "Moments from Sukh Space classes, community gatherings and everyday practice.",
   body: `
 ${pageHero({ title: "Gallery", lead: "Classes, community and everyday practice, online and in Dhanbad. Tap any photo to see it larger." })}
 <section class="gallery">
@@ -291,8 +291,8 @@ ${pageHero({ title: "Customised diet plans", lead: "An optional add-on to your p
 const contact = {
   key: "contact",
   path: "/contact",
-  title: "Contact Sukh Space | WhatsApp Pinki | Dhanbad & Online Yoga",
-  description: "Message Pinki on WhatsApp at +91 83403 34846 for batch timings and fees, or email sukhspace5@gmail.com. Online yoga across India and offline sessions in Dhanbad, Jharkhand.",
+  title: "Contact Sukh Space | WhatsApp Pinki | Online Yoga",
+  description: "Message Pinki on WhatsApp at +91 83403 34846 for batch timings and fees, or email sukhspace5@gmail.com. Live online yoga across India.",
   body: `
 ${pageHero({ title: "Begin a conversation", lead: "The quickest way to reach Pinki is WhatsApp. Choose what fits below and your first message is written for you.", image: { name: "portrait", alt: "Pinki (Pankhuri), founder of Sukh Space", pos: "50% 18%" } })}
 ${composer({ title: "Write your first message", intro: "A few taps, and Pinki will know how to help when she replies." })}

@@ -32,11 +32,11 @@ const business = {
   url: `${SITE}/`,
   logo: `${SITE}/images/p/mark-512.png`,
   image: [`${SITE}/images/p/og.jpg`, `${SITE}/images/p/garden-896.webp`],
-  description: "Yoga, breathwork and wellness with Pinki (Pankhuri): pre-natal, postpartum, women’s and men’s health, weight loss and meditation. In Dhanbad and online across India.",
+  description: "Yoga, breathwork and wellness with Pinki (Pankhuri): pre-natal, postpartum, women’s and men’s health, weight loss and meditation. Live online across India.",
   telephone: `+${PHONE}`,
   email: EMAIL,
-  address: { "@type": "PostalAddress", addressLocality: "Dhanbad", addressRegion: "Jharkhand", addressCountry: "IN" },
-  areaServed: [{ "@type": "City", name: "Dhanbad" }, { "@type": "Country", name: "India" }],
+  address: { "@type": "PostalAddress", addressCountry: "IN" },
+  areaServed: { "@type": "Country", name: "India" },
   founder: {
     "@type": "Person",
     name: TEACHER,
@@ -98,7 +98,7 @@ const footer = (cta) => `
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <a class="brand" href="/"><img src="/images/p/mark-192.webp" alt="" width="96" height="96" loading="lazy"><span>Sukh Space</span></a>
-      <p>Creating space for your sukh through yoga, breathwork and wellness. Ancient yogic wisdom with modern somatic practices, in Dhanbad and online.</p>
+      <p>Creating space for your sukh through yoga, breathwork and wellness. Ancient yogic wisdom with modern somatic practices, live online.</p>
     </div>
     <nav aria-label="Practices">
       <h3>Practices</h3>
